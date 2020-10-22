@@ -12,7 +12,7 @@ import { kFormatter } from "../utils/numberFormater";
 
 /**
  *
- * @param currentPage number
+ * @param {number} currentPage
  * get github trending repos in last 30 days and map it into a functional object
  */
 export const getTrendingRepos = (currentPage = 0) => {
@@ -28,7 +28,7 @@ export const getTrendingRepos = (currentPage = 0) => {
 
 /**
  *
- * @param  repo Object
+ * @param {Object} repo
  *  map github repo to a functional repo object
  *  more détails about data comming from github search api
  * @link https://developer.github.com/v3/search/#search-repositories

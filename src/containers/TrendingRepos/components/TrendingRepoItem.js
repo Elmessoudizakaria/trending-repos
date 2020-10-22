@@ -25,8 +25,8 @@ const TrendingRepoItem = (repo) => {
               <h3>{repo.repo.name}</h3>
               <p>{repo.repo.description}</p>
               <div>
-                <label>Stars {repo.repo.stars}</label>
-                <label>Issues {repo.repo.issues}</label>
+                <label className="sm-box">Stars {repo.repo.stars}</label>
+                <label className="sm-box">Issues {repo.repo.issues}</label>
                 <label>Submitted {repo.repo.lastSubmittedTime}</label>
               </div>
             </div>
