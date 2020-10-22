@@ -32,28 +32,27 @@ const TrendingRepos = () => {
           dispatch({ type: LOAD_REPOS_FAILED });
         });
     }
-  }, [state.isLoading]);
+  }, [state.isLoading,state.page]);
   //   check if last element is visible
   const observer = useRef();
   const lastRepoElementRef = useCallback(
     (node) => {
       if (state.isLoading) return;
       if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver(handleObserver);
+      observer.current = new IntersectionObserver((entities) => {
+        const target = entities[0];
+        if (target.isIntersecting) {
+          if (!state.isError) {
+            dispatch({ type: LOAD_REPOS });
+          } else {
+            bouncerRetry();
+          }
+        }
+      });
       if (node) observer.current.observe(node);
     },
-    [state.isLoading]
+    [state.isLoading, state.isError]
   );
-  const handleObserver = (entities) => {
-    const target = entities[0];
-    if (target.isIntersecting) {
-      if (!state.isError) {
-        dispatch({ type: LOAD_REPOS });
-      } else {
-        bouncerRetry();
-      }
-    }
-  };
 
   const bouncerRetry = () => {
     setTimeout(() => {
