@@ -7,6 +7,7 @@
  * -----
  */
 import React from "react";
+import Avatar from "../../../components/avatar";
 
 const TrendingRepoItem = (repo) => {
   return (
@@ -14,11 +15,7 @@ const TrendingRepoItem = (repo) => {
       <div className="item-card">
         <div className="row">
           <div className="col-md-2">
-            <img
-              src={repo.repo.avatar}
-              alt="avatar"
-              style={{ width: "100%", height: "100%" }}
-            />
+           <Avatar src={repo.repo.avatar}/>
           </div>
           <div className="col-md-10">
             <div>
