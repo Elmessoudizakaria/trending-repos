@@ -7,10 +7,16 @@
  * -----
  */
 import React, { useCallback, useEffect, useReducer, useRef } from "react";
+import Header from "../../components/header";
 import Loader from "../../components/Loader";
 import { getTrendingRepos } from "../../shared/services/trendingRepo.service";
-import TrendingRepoItem from "./components/TrendingRepoItem";
-import { LOAD_REPOS, LOAD_REPOS_FAILED, LOAD_REPOS_SUCCESS } from "./constants";
+import List from "./components/List";
+import {
+  LOAD_REPOS,
+  LOAD_REPOS_FAILED,
+  LOAD_REPOS_SUCCESS,
+  PAGE_TITLE,
+} from "./constants";
 import { initialState, trendingRepoReducer } from "./reducer";
 
 const TrendingRepos = () => {
@@ -61,20 +67,8 @@ const TrendingRepos = () => {
   };
   return (
     <div>
-      <h2>Repo Container</h2>
-      <ul>
-        {state.repos.map((repo, index) => {
-          if (state.repos.length === index + 1) {
-            return (
-              <div key={index} ref={lastRepoElementRef}>
-                <TrendingRepoItem repo={repo} />
-              </div>
-            );
-          } else {
-            return <TrendingRepoItem repo={repo} key={index} />;
-          }
-        })}
-      </ul>
+      <Header title={PAGE_TITLE} />
+      <List lastRepoElementRef={lastRepoElementRef} repos={state.repos} />
       {state.isLoading && <Loader />}
       {state.isError && <h3>Rate limit exceeded</h3>}
     </div>
