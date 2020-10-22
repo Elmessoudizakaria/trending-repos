@@ -8,6 +8,7 @@
  */
 import axios from "axios";
 import moment from "moment";
+import { kFormatter } from "../utils/numberFormater";
 
 /**
  *
@@ -36,8 +37,8 @@ const trendingRepoMapper = (repo) => {
   return {
     name: repo.name,
     description: repo.description,
-    stars: repo.stargazers_count,
-    issues: repo.has_issues ? repo.open_issues : 0,
+    stars: kFormatter(repo.stargazers_count),
+    issues: repo.has_issues ? kFormatter(repo.open_issues) : 0,
     lastSubmittedTime: moment(repo.created_at).fromNow(),
     avatar: repo.owner?.avatar_url,
     login: repo.owner?.login,
