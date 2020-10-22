@@ -1,6 +1,6 @@
-import React from "react";
+import React from         "react"                     ;
+import                    './App.css'                 ;
 import TrendingRepos from "./containers/TrendingRepos";
-import './App.css'
 function App() {
   return (
     <div className="container">

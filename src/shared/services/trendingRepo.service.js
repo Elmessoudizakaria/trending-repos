@@ -6,8 +6,8 @@
  * Modified By: El Messoudi Zakaria (you@you.you>)
  * -----
  */
-import axios from "axios";
-import moment from "moment";
+import   axios        from "axios"                  ;
+import   moment       from "moment"                 ;
 import { kFormatter } from "../utils/numberFormater";
 
 /**
@@ -35,12 +35,12 @@ export const getTrendingRepos = (currentPage = 0) => {
  */
 const trendingRepoMapper = (repo) => {
   return {
-    name: repo.name,
-    description: repo.description,
-    stars: kFormatter(repo.stargazers_count),
-    issues: repo.has_issues ? kFormatter(repo.open_issues) : 0,
-    lastSubmittedTime: moment(repo.created_at).fromNow(),
-    avatar: repo.owner?.avatar_url,
-    login: repo.owner?.login,
+    name             :            repo.name                                               ,
+    description      :            repo.description                                        ,
+    stars            : kFormatter(repo.stargazers_count)                                  ,
+    issues           :            repo.has_issues       ? kFormatter(repo.open_issues) : 0,
+    lastSubmittedTime: moment(    repo.created_at      ).fromNow()                        ,
+    avatar           :            repo.owner           ?.avatar_url                       ,
+    login            :            repo.owner           ?.login                            ,
   };
 };

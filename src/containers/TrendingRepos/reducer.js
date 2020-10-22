@@ -10,25 +10,33 @@
 import { LOAD_REPOS, LOAD_REPOS_FAILED, LOAD_REPOS_SUCCESS } from "./constants";
 
 export const initialState = {
-  repos: [],
-  page: 0,
-  isError: false,
+  repos    : []   ,
+  page     : 0    ,
+  isError  : false,
   isLoading: false,
 };
 export const trendingRepoReducer = (state = initialState,action) => {
   switch (action.type) {
     case LOAD_REPOS:
-      return { ...state, isLoading: true, isError: false };
+      return { 
+        ...state    ,
+           isLoading: true,
+           isError  : false 
+      };
     case LOAD_REPOS_SUCCESS:
       return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        page: state.page + 1,
-        repos: [...state.repos, ...action.value],
+        ...state                     ,
+           isLoading: false          ,
+           isError  : false          ,
+           page     : state.page + 1 ,
+           repos    : [...state.repos, ...action.value],
       };
     case LOAD_REPOS_FAILED:
-      return { ...state, isLoading: false, isError: true };
+      return { 
+        ...state    ,
+           isLoading: false,
+           isError  : true 
+      };
     default:
       return state;
   }

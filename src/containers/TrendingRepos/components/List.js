@@ -6,7 +6,7 @@
  * Modified By: El Messoudi Zakaria (you@you.you>)
  * -----
  */
-import React from "react";
+import React            from "react"             ;
 import TrendingRepoItem from "./TrendingRepoItem";
 
 export default function List({ repos, lastRepoElementRef }) {

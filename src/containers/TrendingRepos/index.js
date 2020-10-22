@@ -6,18 +6,13 @@
  * Modified By: El Messoudi Zakaria (you@you.you>)
  * -----
  */
-import React, { useCallback, useEffect, useReducer, useRef } from "react";
-import Header from "../../components/header";
-import Loader from "../../components/Loader";
-import { getTrendingRepos } from "../../shared/services/trendingRepo.service";
-import List from "./components/List";
-import {
-  LOAD_REPOS,
-  LOAD_REPOS_FAILED,
-  LOAD_REPOS_SUCCESS,
-  PAGE_TITLE,
-} from "./constants";
-import { initialState, trendingRepoReducer } from "./reducer";
+import   React           , { useCallback, useEffect, useReducer, useRef }   from "react"                                     ;
+import   Header                                                             from "../../components/header"                   ;
+import   Loader                                                             from "../../components/Loader"                   ;
+import { getTrendingRepos }                                                 from "../../shared/services/trendingRepo.service";
+import   List                                                               from "./components/List"                         ;
+import { LOAD_REPOS      ,LOAD_REPOS_FAILED,LOAD_REPOS_SUCCESS,PAGE_TITLE,} from "./constants"                               ;
+import { initialState    , trendingRepoReducer }                            from "./reducer"                                 ;
 
 const TrendingRepos = () => {
   const [state, dispatch] = useReducer(trendingRepoReducer, initialState);

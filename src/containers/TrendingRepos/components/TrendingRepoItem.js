@@ -6,7 +6,7 @@
  * Modified By: El Messoudi Zakaria (you@you.you>)
  * -----
  */
-import React from "react";
+import React  from "react"                     ;
 import Avatar from "../../../components/avatar";
 
 const TrendingRepoItem = (repo) => {
