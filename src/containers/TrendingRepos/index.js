@@ -6,7 +6,7 @@
  * Modified By: El Messoudi Zakaria (you@you.you>)
  * -----
  */
-import React, { useEffect, useReducer } from "react";
+import React, { useCallback, useEffect, useReducer, useRef } from "react";
 import Loader from "../../components/Loader";
 import { getTrendingRepos } from "../../shared/services/trendingRepo.service";
 import TrendingRepoItem from "./components/TrendingRepoItem";
@@ -32,15 +32,51 @@ const TrendingRepos = () => {
         });
     }
   }, [state.isLoading]);
+  //   check if last element is visible
+  const observer = useRef();
+  const lastRepoElementRef = useCallback(
+    (node) => {
+      if (state.isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(handleObserver);
+      if (node) observer.current.observe(node);
+    },
+    [state.isLoading]
+  );
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      if (!state.isError) {
+        dispatch({ type: LOAD_REPOS });
+      } else {
+        bouncerRetry();
+      }
+    }
+  };
+
+  const bouncerRetry = () => {
+    setTimeout(() => {
+      dispatch({ type: LOAD_REPOS });
+    }, 3000);
+  };
   return (
     <div>
       <h2>Repo Container</h2>
       <ul>
-        {state.repos.map((repo, index) => (
-          <TrendingRepoItem repo={repo} key={index} />
-        ))}
+        {state.repos.map((repo, index) => {
+          if (state.repos.length === index + 1) {
+            return (
+              <div key={index} ref={lastRepoElementRef}>
+                <TrendingRepoItem repo={repo} />
+              </div>
+            );
+          } else {
+            return <TrendingRepoItem repo={repo} key={index} />;
+          }
+        })}
       </ul>
-      <Loader />
+      {state.isLoading && <Loader />}
+      {state.isError && <h3>Rate limit exceeded</h3>}
     </div>
   );
 };
