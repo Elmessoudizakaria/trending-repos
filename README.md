@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Front-end Coding Challenge
+
+## Main app features
+
+This App list the most starred Github Repos created in the last 30 days using Github [API](https://developer.github.com/v3/search/#search-repositories).it provides an infinite scroll using react hooks.
 
 ## Available Scripts
 
@@ -42,6 +46,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Some [React best practices](https://github.com/kudos-dude/react-best-practices). 
+
+React folder structure [here](https://gist.github.com/vasanthk/2bde67682511659c4d6a)
 
 ### Code Splitting
 
