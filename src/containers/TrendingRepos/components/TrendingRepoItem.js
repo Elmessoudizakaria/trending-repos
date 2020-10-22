@@ -8,11 +8,11 @@
  */
 import React from 'react'
 
-const TrendingRepoItem = ()=> {
+const TrendingRepoItem = (repo)=> {
     return (
-        <div>
-            <h3>Repo Item Component</h3>
-        </div>
+       <li>
+           <label>{repo.repo.name}</label>
+       </li>
     )
 }
 
