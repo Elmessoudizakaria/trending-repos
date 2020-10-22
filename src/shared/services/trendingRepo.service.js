@@ -10,11 +10,11 @@ import axios from "axios";
 import moment from "moment";
 
 /**
- * 
+ *
  * @param currentPage number
- * get github trending repos in last 30 days and map it into a functional object 
+ * get github trending repos in last 30 days and map it into a functional object
  */
-export const getTrendingRepos = (currentPage) => {
+export const getTrendingRepos = (currentPage = 0) => {
   const startSearchDate = moment().subtract(30, "days").format("YYYY-MM-DD");
   return axios
     .get(
@@ -26,10 +26,10 @@ export const getTrendingRepos = (currentPage) => {
 };
 
 /**
- * 
+ *
  * @param  repo Object
  *  map github repo to a functional repo object
- *  more détails about data comming from github search api 
+ *  more détails about data comming from github search api
  * @link https://developer.github.com/v3/search/#search-repositories
  */
 const trendingRepoMapper = (repo) => {
@@ -37,7 +37,7 @@ const trendingRepoMapper = (repo) => {
     name: repo.name,
     description: repo.description,
     stars: repo.stargazers_count,
-    issues: repo.has_issues ?repo.open_issues : 0,
+    issues: repo.has_issues ? repo.open_issues : 0,
     lastSubmittedTime: moment(repo.created_at).fromNow(),
     avatar: repo.owner?.avatar_url,
     login: repo.owner?.login,
