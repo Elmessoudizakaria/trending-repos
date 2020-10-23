@@ -15,16 +15,16 @@ const TrendingRepoItem = (repo) => {
       <div className="item-card">
         <div className="row">
           <div className="col-md-2">
-           <Avatar src={repo.repo.avatar}/>
+           <Avatar src={repo.avatar}/>
           </div>
           <div className="col-md-10">
             <div>
-              <h3>{repo.repo.name}</h3>
-              <p>{repo.repo.description}</p>
+              <h3>{repo.name}</h3>
+              <p>{repo.description}</p>
               <div>
-                <label className="sm-box">Stars {repo.repo.stars}</label>
-                <label className="sm-box">Issues {repo.repo.issues}</label>
-                <label>Submitted {repo.repo.lastSubmittedTime}</label>
+                <label className="sm-box">Stars {repo.stars}</label>
+                <label className="sm-box">Issues {repo.issues}</label>
+                <label>Submitted {repo.lastSubmittedTime}</label>
               </div>
             </div>
           </div>

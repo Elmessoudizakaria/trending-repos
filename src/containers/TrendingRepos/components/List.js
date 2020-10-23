@@ -16,11 +16,11 @@ export default function List({ repos, lastRepoElementRef }) {
         if (repos.length === index + 1) {
           return (
             <div key={index} ref={lastRepoElementRef}>
-              <TrendingRepoItem repo={repo} />
+              <TrendingRepoItem {...repo} />
             </div>
           );
         } else {
-          return <TrendingRepoItem repo={repo} key={index} />;
+          return <TrendingRepoItem {...repo} key={index} />;
         }
       })}
     </ul>
