@@ -15,12 +15,12 @@ export default function List({ repos, lastRepoElementRef }) {
       {repos.map((repo, index) => {
         if (repos.length === index + 1) {
           return (
-            <div key={index} ref={lastRepoElementRef}>
+            <div key={repo.name+repo.login} ref={lastRepoElementRef}>
               <TrendingRepoItem {...repo} />
             </div>
           );
         } else {
-          return <TrendingRepoItem {...repo} key={index} />;
+          return <TrendingRepoItem {...repo} key={repo.name+repo.login} />;
         }
       })}
     </ul>
